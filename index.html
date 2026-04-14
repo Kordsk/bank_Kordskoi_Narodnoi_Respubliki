@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1000" />
+  <title>Центральный банк КНР - Курсы валют</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #d7dde6;
+      font-family: Tahoma, Arial, Verdana, sans-serif;
+      font-size: 12px;
+      color: #222;
+    }
+
+    a {
+      color: #003b7a;
+      text-decoration: underline;
+    }
+
+    .page {
+      width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-left: 1px solid #97a7bb;
+      border-right: 1px solid #97a7bb;
+      min-height: 100vh;
+    }
+
+    .topline {
+      height: 26px;
+      line-height: 26px;
+      background: #6d8199;
+      color: #fff;
+      padding: 0 12px;
+      font-size: 11px;
+    }
+
+    .header {
+      background: linear-gradient(#eef3f8, #d9e3ee);
+      border-bottom: 1px solid #9caec3;
+      padding: 16px 18px 14px 18px;
+    }
+
+    .header-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .header-left {
+      width: 80px;
+      vertical-align: top;
+    }
+
+    .header-right {
+      vertical-align: top;
+    }
+
+    .emblem {
+      width: 58px;
+      height: 58px;
+      border: 1px solid #8b9eb2;
+      background: #f5f7fa;
+      color: #5e7082;
+      text-align: center;
+      line-height: 58px;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    .title-1 {
+      font-size: 13px;
+      color: #42576d;
+      margin-bottom: 4px;
+    }
+
+    .title-2 {
+      font-size: 26px;
+      color: #23374d;
+      font-weight: bold;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .title-3 {
+      font-size: 12px;
+      color: #56697c;
+    }
+
+    .nav {
+      background: #ebf0f5;
+      border-top: 1px solid #b7c5d4;
+      border-bottom: 1px solid #b7c5d4;
+      padding: 0 10px;
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: 8px 10px;
+      color: #17395f;
+      text-decoration: none;
+      border-right: 1px solid #c9d4df;
+      font-size: 12px;
+    }
+
+    .nav a:hover {
+      background: #dfe8f1;
+      text-decoration: underline;
+    }
+
+    .content {
+      padding: 14px 14px 24px 14px;
+    }
+
+    .breadcrumbs {
+      color: #5d6e80;
+      margin-bottom: 12px;
+      font-size: 11px;
+    }
+
+    .layout {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .sidebar {
+      width: 220px;
+      vertical-align: top;
+      padding-right: 14px;
+    }
+
+    .main {
+      vertical-align: top;
+    }
+
+    .box {
+      border: 1px solid #aab8c7;
+      margin-bottom: 14px;
+      background: #fff;
+    }
+
+    .box-title {
+      background: linear-gradient(#edf3f8, #dce6f0);
+      border-bottom: 1px solid #b3c0cd;
+      padding: 7px 10px;
+      font-weight: bold;
+      color: #29425c;
+      font-size: 12px;
+    }
+
+    .box-body {
+      padding: 10px;
+    }
+
+    .news-list {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .news-list li {
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .main-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #20354b;
+      margin-bottom: 6px;
+    }
+
+    .main-subtitle {
+      color: #5f6f80;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .rate-date {
+      background: #f1f5f9;
+      border: 1px solid #c8d2dd;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      color: #44576b;
+    }
+
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    table.data th {
+      background: #dce7f2;
+      color: #22384d;
+      border: 1px solid #b2c0ce;
+      padding: 8px 6px;
+      text-align: left;
+    }
+
+    table.data td {
+      border: 1px solid #c3ced9;
+      padding: 8px 6px;
+      background: #fff;
+    }
+
+    table.data tr:nth-child(even) td {
+      background: #f8fbfd;
+    }
+
+    .important {
+      color: #8d1d1d;
+      font-weight: bold;
+    }
+
+    .converter {
+      border: 1px solid #aab8c7;
+      background: #f9fbfd;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+
+    .form-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .form-table td {
+      padding: 6px 4px;
+      vertical-align: middle;
+    }
+
+    .form-table .label {
+      width: 220px;
+      color: #334a62;
+      font-weight: bold;
+    }
+
+    input.text {
+      width: 180px;
+      padding: 4px 5px;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 12px;
+      border: 1px solid #99aabd;
+      background: #fff;
+      color: #222;
+    }
+
+    .result-box {
+      margin-top: 10px;
+      border: 1px solid #c4cfda;
+      background: #ffffff;
+      padding: 10px;
+      line-height: 1.6;
+    }
+
+    .note {
+      background: #fffbe8;
+      border: 1px solid #e0d39a;
+      padding: 10px;
+      color: #5a4b17;
+      line-height: 1.5;
+      margin-top: 14px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      border-top: 1px solid #b6c3d1;
+      background: #eef3f8;
+      padding: 14px;
+      color: #5c6f83;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .footer-links a {
+      margin-right: 12px;
+    }
+
+    .small {
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topline">
+      Официальный сервер Центрального банка Кордской Народной Республики
+    </div>
+
+    <div class="header">
+      <table class="header-table">
+        <tr>
+          <td class="header-left">
+            <div class="emblem">ЦБ КНР</div>
+          </td>
+          <td class="header-right">
+            <div class="title-1">Центральный банк Кордской Народной Республики</div>
+            <div class="title-2">Официальные курсы иностранных валют</div>
+            <div class="title-3">Публикация для кредитных организаций, учреждений и граждан КНР</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="nav">
+      <a href="#">Главная</a>
+      <a href="#">Банк КНР</a>
+      <a href="#">Курсы валют</a>
+      <a href="#">Статистика</a>
+      <a href="#">Документы</a>
+      <a href="#">Справочная информация</a>
+      <a href="#">Контакты</a>
+    </div>
+
+    <div class="content">
+      <div class="breadcrumbs">
+        Главная / Денежно-кредитная политика / Официальные курсы иностранных валют
+      </div>
+
+      <table class="layout">
+        <tr>
+          <td class="sidebar">
+            <div class="box">
+              <div class="box-title">Разделы</div>
+              <div class="box-body">
+                <div><a href="#">Официальные курсы</a></div>
+                <div style="margin-top:8px;"><a href="#">Архив публикаций</a></div>
+                <div style="margin-top:8px;"><a href="#">Порядок расчёта</a></div>
+                <div style="margin-top:8px;"><a href="#">Валютное регулирование</a></div>
+                <div style="margin-top:8px;"><a href="#">Справка для граждан</a></div>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="box-title">Служебная информация</div>
+              <div class="box-body small">
+                <div><b>Дата публикации:</b> <span id="publishDateSide">19.03.2008 10:00</span></div>
+                <div style="margin-top:8px;"><b>Статус:</b> действует</div>
+                <div style="margin-top:8px;"><b>Источник:</b> ЦБ КНР</div>
+                <div style="margin-top:8px;"><b>Обновление:</b> ежедневно</div>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="box-title">Краткие сообщения</div>
+              <div class="box-body">
+                <ul class="news-list">
+                  <li>Порядок определения официального курса утверждён постановлением ЦБ КНР.</li>
+                  <li>Операции на частном рынке не относятся к официальной публикации.</li>
+                  <li>Справки по курсам предоставляются в рабочие дни.</li>
+                </ul>
+              </div>
+            </div>
+          </td>
+
+          <td class="main">
+            <div class="main-title">Официальные курсы иностранных валют по отношению к кордскому рублю</div>
+            <div class="main-subtitle">
+              Данные публикуются в целях расчётов, бухгалтерской отчётности, внутреннего учёта и информационного обеспечения
+              организаций и граждан на территории КНР.
+            </div>
+
+            <div class="rate-date">
+              <b>Дата вступления в силу:</b> <span id="publishDateMain">19.03.2008</span>
+            </div>
+
+            <table class="data">
+              <thead>
+                <tr>
+                  <th style="width:70px;">Код</th>
+                  <th>Валюта</th>
+                  <th style="width:180px;">Курс</th>
+                  <th style="width:160px;">Примечание</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>USD</td>
+                  <td>Доллар США</td>
+                  <td id="usdOfficialView">60.80 KRB</td>
+                  <td>официальный</td>
+                </tr>
+                <tr>
+                  <td>EUR</td>
+                  <td>Евро</td>
+                  <td id="eurOfficialView">71.40 KRB</td>
+                  <td>официальный</td>
+                </tr>
+                <tr>
+                  <td>RUB</td>
+                  <td>Российский рубль</td>
+                  <td id="rubOfficialView">1.82 KRB</td>
+                  <td>официальный</td>
+                </tr>
+                <tr>
+                  <td>USD*</td>
+                  <td>Доллар США (внебанковский рынок)</td>
+                  <td id="usdBlackView" class="important">87.60 KRB</td>
+                  <td class="important">неофициально</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="converter">
+              <b>Расчётный конвертер</b>
+              <table class="form-table" style="margin-top:8px;">
+                <tr>
+                  <td class="label">USD официальный</td>
+                  <td><input class="text" id="usdOfficial" type="number" step="0.01" value="60.8"></td>
+                </tr>
+                <tr>
+                  <td class="label">USD внебанковский</td>
+                  <td><input class="text" id="usdBlack" type="number" step="0.01" value="87.6"></td>
+                </tr>
+                <tr>
+                  <td class="label">EUR официальный</td>
+                  <td><input class="text" id="eurOfficial" type="number" step="0.01" value="71.4"></td>
+                </tr>
+                <tr>
+                  <td class="label">RUB официальный</td>
+                  <td><input class="text" id="rubOfficial" type="number" step="0.01" value="1.82"></td>
+                </tr>
+                <tr>
+                  <td class="label">Сумма в KRB</td>
+                  <td><input class="text" id="krbAmount" type="number" step="0.01" value="1000"></td>
+                </tr>
+              </table>
+
+              <div class="result-box" id="converterOutput">
+                1000.00 KRB = 16.45 USD
+              </div>
+            </div>
+
+            <table class="data">
+              <thead>
+                <tr>
+                  <th>Показатель</th>
+                  <th style="width:220px;">Значение</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Официальный курс доллара США</td>
+                  <td id="tableUsdOfficial">60.80 KRB</td>
+                </tr>
+                <tr>
+                  <td>Внебанковский курс доллара США</td>
+                  <td id="tableUsdBlack">87.60 KRB</td>
+                </tr>
+                <tr>
+                  <td>Отклонение от официального курса</td>
+                  <td id="tableSpread">44.08%</td>
+                </tr>
+                <tr>
+                  <td>Официальный курс евро</td>
+                  <td id="tableEurOfficial">71.40 KRB</td>
+                </tr>
+                <tr>
+                  <td>Официальный курс российского рубля</td>
+                  <td id="tableRubOfficial">1.82 KRB</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="note">
+              <b>Примечание.</b> Официальный курс устанавливается Центральным банком КНР. Значения, относящиеся к
+              внебанковскому и частному рынку, приводятся исключительно в справочных целях и не используются для
+              официального бухгалтерского и банковского учёта.
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#">О банке</a>
+          <a href="#">Правовая информация</a>
+          <a href="#">Архив</a>
+          <a href="#">Карта сайта</a>
+        </div>
+        <div style="margin-top:8px;">
+          © Центральный банк Кордской Народной Республики, 2008
+        </div>
+        <div style="margin-top:4px;">
+          При использовании материалов ссылка на официальный сервер ЦБ КНР обязательна.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const usdOfficial = document.getElementById('usdOfficial');
+      const usdBlack = document.getElementById('usdBlack');
+      const eurOfficial = document.getElementById('eurOfficial');
+      const rubOfficial = document.getElementById('rubOfficial');
+      const krbAmount = document.getElementById('krbAmount');
+
+      const usdOfficialView = document.getElementById('usdOfficialView');
+      const usdBlackView = document.getElementById('usdBlackView');
+      const eurOfficialView = document.getElementById('eurOfficialView');
+      const rubOfficialView = document.getElementById('rubOfficialView');
+
+      const tableUsdOfficial = document.getElementById('tableUsdOfficial');
+      const tableUsdBlack = document.getElementById('tableUsdBlack');
+      const tableSpread = document.getElementById('tableSpread');
+      const tableEurOfficial = document.getElementById('tableEurOfficial');
+      const tableRubOfficial = document.getElementById('tableRubOfficial');
+
+      const converterOutput = document.getElementById('converterOutput');
+      const publishDateSide = document.getElementById('publishDateSide');
+      const publishDateMain = document.getElementById('publishDateMain');
+
+      function fmt(value) {
+        return Number(value).toFixed(2);
+      }
+
+      function calcSpread(official, black) {
+        if (!official || !black || official <= 0 || black <= 0) return 0;
+        return ((black - official) / official) * 100;
+      }
+
+      function updateAll() {
+        const uo = parseFloat(usdOfficial.value) || 0;
+        const ub = parseFloat(usdBlack.value) || 0;
+        const eo = parseFloat(eurOfficial.value) || 0;
+        const ro = parseFloat(rubOfficial.value) || 0;
+        const amount = parseFloat(krbAmount.value) || 0;
+
+        const spread = calcSpread(uo, ub);
+
+        usdOfficialView.textContent = fmt(uo) + ' KRB';
+        usdBlackView.textContent = fmt(ub) + ' KRB';
+        eurOfficialView.textContent = fmt(eo) + ' KRB';
+        rubOfficialView.textContent = fmt(ro) + ' KRB';
+
+        tableUsdOfficial.textContent = fmt(uo) + ' KRB';
+        tableUsdBlack.textContent = fmt(ub) + ' KRB';
+        tableSpread.textContent = fmt(spread) + '%';
+        tableEurOfficial.textContent = fmt(eo) + ' KRB';
+        tableRubOfficial.textContent = fmt(ro) + ' KRB';
+
+        const officialUsd = uo > 0 ? amount / uo : 0;
+        const blackUsd = ub > 0 ? amount / ub : 0;
+        const officialEur = eo > 0 ? amount / eo : 0;
+        const officialRub = ro > 0 ? amount / ro : 0;
+
+        converterOutput.innerHTML =
+          '<div><b>' + fmt(amount) + ' KRB</b> = ' + fmt(officialUsd) + ' USD <span style="color:#55697d;">(официально)</span></div>' +
+          '<div><b>' + fmt(amount) + ' KRB</b> = ' + fmt(blackUsd) + ' USD <span style="color:#8d1d1d;">(внебанковский)</span></div>' +
+          '<div><b>' + fmt(amount) + ' KRB</b> = ' + fmt(officialEur) + ' EUR <span style="color:#55697d;">(официально)</span></div>' +
+          '<div><b>' + fmt(amount) + ' KRB</b> = ' + fmt(officialRub) + ' RUB <span style="color:#55697d;">(официально)</span></div>';
+
+        publishDateSide.textContent = '19.03.2008 10:00';
+        publishDateMain.textContent = '19.03.2008';
+      }
+
+      [usdOfficial, usdBlack, eurOfficial, rubOfficial, krbAmount].forEach(function (el) {
+        el.addEventListener('input', updateAll);
+        el.addEventListener('change', updateAll);
+      });
+
+      updateAll();
+    })();
+  </script>
+</body>
+</html>
